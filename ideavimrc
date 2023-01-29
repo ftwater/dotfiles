@@ -1,0 +1,53 @@
+" =============================================================================
+" Plugins
+" =============================================================================
+Pug 'tpope/vim-surround'
+Plug 'jiangmiao/auto-pairs'
+Plug 'easymotion/vim-easymotion'
+
+" =============================================================================
+" basic config
+" =============================================================================
+st smartcase
+set number
+set relativenumber
+set clipboard+=unnamed
+set ignorecase
+set scrolloff=30
+set history=200
+set incsearch
+set hlsearch
+set easymotion
+set keep-english-in-normal
+
+
+" =============================================================================
+" keymapping
+" =============================================================================
+" leader key map
+let mapleader=" "
+"  nmap
+nnoremap H ^
+nnoremap L $
+" 回到上次修改的位置(当前文件)
+nnoremap ga '.
+nmap <Leader> <Plug>(easymotion-prefix)
+" 重新加载ideavimrc
+nmap gvr <action>(IdeaVim.ReloadVimRc.reload)
+nmap ge <action>(GotoNextError)
+nmap gt <action>(GotoTest)
+nmap gmp <action>(MethodUp)
+nmap gmd <action>(MethodDown)
+nmap gi <action>(GotoImplementation)
+nnoremap cw bcw
+nmap nl :nohlsearch<CR>
+nmap <S-j> ddp
+nmap <S-k> ddkP
+
+" imap
+inoremap jk <ESC>
+imap <S-j> ddp
+imap <S-k> ddkP
+
+" vmap
+vnoremap jk <ESC>
