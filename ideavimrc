@@ -3,7 +3,6 @@
 " =============================================================================
 Pug 'tpope/vim-surround'
 Plug 'jiangmiao/auto-pairs'
-Plug 'easymotion/vim-easymotion'
 
 " =============================================================================
 " basic config
@@ -17,8 +16,8 @@ set scrolloff=30
 set history=200
 set incsearch
 set hlsearch
-set easymotion
 set keep-english-in-normal
+set easymotion
 
 
 " =============================================================================
@@ -29,25 +28,113 @@ let mapleader=" "
 "  nmap
 nnoremap H ^
 nnoremap L $
+nnoremap J 10j
+nnoremap K 10k
 " 回到上次修改的位置(当前文件)
 nnoremap ga '.
-nmap <Leader> <Plug>(easymotion-prefix)
+nmap gb <action>(Back)
+nmap gf <action>(Forward)
 " 重新加载ideavimrc
 nmap gvr <action>(IdeaVim.ReloadVimRc.reload)
 nmap ge <action>(GotoNextError)
 nmap gt <action>(GotoTest)
-nmap gmp <action>(MethodUp)
-nmap gmd <action>(MethodDown)
 nmap gi <action>(GotoImplementation)
-nnoremap cw bcw
+nmap sp <action>(ParameterInfo)
+nnoremap cw wbcw
 nmap nl :nohlsearch<CR>
-nmap <S-j> ddp
-nmap <S-k> ddkP
+nmap <C-j> ddp
+nmap <C-k> ddkP
+nmap <A-h> <action>(PreviousTab)
+nmap <A-l> <action>(NextTab)
 
 " imap
 inoremap jk <ESC>
-imap <S-j> ddp
-imap <S-k> ddkP
+imap <C-j> ddp
+imap <C-k> ddkP
+inoremap J 10j
+inoremap K 10k
 
 " vmap
 vnoremap jk <ESC>
+vnoremap H 0
+vnoremap L $
+
+" ================================================================================================
+" 👻👻👻 Which-Key 👻👻👻
+" ================================================================================================
+set which-key
+set notimeout
+
+" f: Find/Format ⭐️
+let g:WhichKeyDesc_FindOrFormat_FindFile = "<leader>ff FindFile"
+nmap <leader>ff <action>(GotoFile)
+
+let g:WhichKeyDesc_FindOrFormat_FindFileLocation = "<leader>fl FindFileLocation"
+nmap <leader>fl <action>(SelectInProjectView)
+
+let g:WhichKeyDesc_FindOrFormat_Format = "<leader>fFormat"
+nmap <leader>fm <action>(ReformatCode) \| <action>(OptimizeImports)
+
+" i: Insert ⭐️
+let g:WhichKeyDesc_InsertAfterBrackets = "<leader>i InsertAfterBrackets"
+nmap <leader>i f(a
+
+" l: lsp: Language server protocol (align with neovim)⭐️
+let g:WhichKeyDesc_LSP = "<leader>l LSP"
+let g:WhichKeyDesc_LSP_Rename = "<leader>lr Rename"
+nmap <leader>lr <action>(RenameElement)
+
+" s: Show ⭐️
+let g:WhichKeyDesc_Show = "<leader>s Show"
+let g:WhichKeyDesc_Show_FileStructure = "<leader>ss ShowFileStructure"
+nmap <leader>ss <action>(FileStructurePopup)
+let g:WhichKeyDesc_Show_Bookmarks = "<leader>sb ShowBookmarks"
+nmap <leader>sb <action>(ShowBookmarks)
+let g:WhichKeyDesc_Show_ParameterInfo = "<leader>sb ShowParameterInfo"
+nmap <leader>sp <action>(ParameterInfo)
+
+" r: Run/Re ⭐️
+let g:WhichKeyDesc_RunOrRe = "<leader>r RunOrRe"
+let g:WhichKeyDesc_RunOrRe_ReRun = "<leader>rr ReRun"
+nmap <leader>rr <action>(Rerun)
+let g:WhichKeyDesc_RunOrRe_ReRunTests = "<leader>rt ReRunTests"
+nmap <leader>rt <action>(RerunTests)
+let g:WhichKeyDesc_RunOrRe_Rename = "<leader>rn Rename"
+map <leader>rn <action>(RenameElement)
+let g:WhichKeyDesc_RunOrRefactor = "<leader>rs ChangeSignature"
+map <leader>rs <action>(ChangeSignature)
+
+" w: Window ⭐️
+let g:WhichKeyDesc_Windows = "<leader>w Windows"
+let g:WhichKeyDesc_Windows_maximize = "<leader>wo maximize"
+nmap <leader>wo <action>(UnsplitAll) \| <action>(HideAllWindows)
+let g:WhichKeyDesc_Windows_splitWindowVertically = "<leader>wl splitWindowVertically"
+nmap <leader>wl <action>(Macro.SplitVertically)
+let g:WhichKeyDesc_Windows_closeActiveWindow = "<leader>wc closeActiveWindow"
+nmap <leader>wc <c-w>c
+
+" z: zip(fold) ⭐️
+let g:WhichKeyDesc_Zip = "<leader>z Zip"
+let g:WhichKeyDesc_Zip_unZipAll = "<leader>zo unZipAll"
+nmap <leader>zo <action>(ExpandAllRegions)
+let g:WhichKeyDesc_Zip_ZipAll = "<leader>zc ZipAll"
+nmap <leader>zc <action>(CollapseAllRegions)
+
+" c: Close ⭐️;
+let g:WhichKeyDesc_CloseBuffer = "<leader>c CloseBuffer"
+nmap <leader>c :q!<CR>
+
+" e: Toggle Explorer ⭐️
+let g:WhichKeyDesc_ToggleExplorerOrExtract = "<leader>e ToggleExplorer"
+nmap <leader>e <action>(ActivateProjectToolWindow)
+" e: Extract
+" extract method/function
+vmap <leader>em <action>(ExtractMethod)
+" extract constant
+vmap <leader>ec <action>(IntroduceConstant)
+" extract field
+vmap <leader>ef <action>(IntroduceField)
+" extract variable
+vmap <leader>ev <action>(IntroduceVariable)
+
+nmap \ <Plug>(easymotion-prefix)
