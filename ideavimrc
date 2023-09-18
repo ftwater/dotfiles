@@ -373,6 +373,11 @@ let g:WhichKeyDesc_PasteClipboardUp = "<leader>P PasteClipboardUp"
 vmap <leader>P "+P
 
 
+"========== p ==========
+"快速查看文档
+let g:WhichKeyDesc_QuickDocument = "<leader>qd QuickDocument"
+nmap <leader>qd <action>(QuickJavaDoc)
+
 "========== r ==========
 let g:WhichKeyDesc_RunOrRe = "<leader>r RunOrRe"
 
