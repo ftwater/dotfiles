@@ -399,7 +399,8 @@ nmap <leader>rt <action>(RerunTests)
 "在代码中快速更改一个标识符的名称，并自动处理所有相关的引用(Shift + F6)
 let g:WhichKeyDesc_RunOrRe_Rename = "<leader>rn Rename"
 map <leader>rn <action>(RenameElement)
-
+let g:WhichKeyDesc_ScopeHighlightingAction = "<leader>rh 区域高亮"
+map <leader>rh <action>(Rainbow.ScopeHighlightingAction)
 
 "========== s ==========
 let g:WhichKeyDesc_Show = "<leader>s Show"
