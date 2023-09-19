@@ -88,6 +88,7 @@ nmap ma <action>(ToggleBookmark)
 nmap <C-S> <action>(SaveAll)
 imap <C-S> <Esc><action>(SaveAll)
 
+nmap s <Plug>(easymotion-prefix)
 " e: Extract
 " extract method/function 将选中的代码片段提取为一个独立的方法(Ctrl + Alt + M)
 vmap <leader>em <action>(ExtractMethod)
@@ -118,7 +119,6 @@ let mapleader = " "
 set which-key
 set notimeout
 set easymotion
-
 
 
 
@@ -360,6 +360,10 @@ let g:WhichKeyDesc_NERDTreeOrNew_NewClass = "<leader>nc NewClass"
 nmap <leader>nc <action>(NewClass)
 
 
+"========== o ==========
+let g:WhichKeyDesc_OpenTerminal = "<leader>ot ActivateTerminalToolWindow"
+nmap <leader>ot <action>(ActivateTerminalToolWindow)
+
 "========== p ==========
 "从剪切板粘贴到下面行
 let g:WhichKeyDesc_PasteClipboardDown = "<leader>p PasteClipboardDown"
@@ -408,7 +412,8 @@ let g:WhichKeyDesc_Show_Bookmarks = "<leader>sb ShowBookmarks"
 nmap <leader>sb <action>(ShowBookmarks)
 "用于显示方法或函数的参数信息(Ctrl + p)
 let g:WhichKeyDesc_Show_ParameterInfo = "<leader>sp ShowParameterInfo"
-nmap <leader>sp <action>(ParameterInfo)
+nmap <leader>sp <action>(ParameterInfo);
+
 
 
 "========= t ==========
@@ -457,7 +462,7 @@ nmap <leader>zc <action>(CollapseAllRegions)
 
 
 
-" ================================================================================================
+" ===============================================================================================
 " 🌸🌸🌸 NERDTree 🌸🌸🌸
 " ================================================================================================
 "<C-w-w>：在多个打开的编辑器窗口之间切换
@@ -476,5 +481,3 @@ nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
 "按下 <C-f> 将在 NERDTree 文件资源管理器中定位当前编辑文件所在的节点，并使其可见
 nnoremap <C-f> :NERDTreeFind<CR>
-
-"nnoremap <Leader><Leader> <Plug>(easymotion-prefix)
