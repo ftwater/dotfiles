@@ -45,14 +45,17 @@ nmap <CR> o<Esc>
 nmap <S-Enter> O<Esc>
 
 "快速跳转到行首和行尾
-nnoremap H ^
-nnoremap L $
 nnoremap dH d0
 nnoremap dL d$
+
+nnoremap J 3j
+nnoremap K 3k
 
 "--在普通和插入模式下，向下交换行/向上交换行
 nnoremap <C-j> :m +1<CR>
 nnoremap <C-k> :m -2<CR>
+nnoremap <C-a> ^
+nnoremap <C-e> $
 inoremap <C-j> <Esc> :m +1<CR>gi
 inoremap <C-k> <Esc> :m -2<CR>gi
 
@@ -89,7 +92,7 @@ nmap ma <action>(ToggleBookmark)
 nmap <C-S> <action>(SaveAll)
 imap <C-S> <Esc><action>(SaveAll)
 
-nmap s <Plug>(easymotion-prefix)
+nmap s <Plug>(easymotion-prefix)s
 " e: Extract
 " extract method/function 将选中的代码片段提取为一个独立的方法(Ctrl + Alt + M)
 vmap <leader>em <action>(ExtractMethod)
