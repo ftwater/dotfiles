@@ -47,7 +47,8 @@ nmap <S-Enter> O<Esc>
 "快速跳转到行首和行尾
 nnoremap dH d0
 nnoremap dL d$
-
+nnoremap H ^
+nnoremap L $
 nnoremap J 3j
 nnoremap K 3k
 
