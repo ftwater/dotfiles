@@ -29,4 +29,4 @@ vnoremap jk <ESC>
 
 "" === leader key map ===
 let mapleader=" "
-map <Leader> <Plug>(easymotion-prefix)
+map s <Plug>(easymotion-prefix)s
