@@ -26,6 +26,9 @@ function install_vim_plug() {
 log "...更新源..."
 sudo apt-get update
 
+log "...install base..."
+sudo apt-get install curl wget -y
+
 log "...安装neovim..."
 sudo apt-get install neovim -y
 
