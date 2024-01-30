@@ -33,9 +33,14 @@ set hlsearch
 "--设置相对行号 和 当前行的绝对行号
 set number relativenumber
 
+"--不需要循环搜索
+set nowrapscan
+
 "--设置返回normal模式时回到英文输入法
 set keep-english-in-normal
 
+"共享系统剪切板
+set clipboard=unnamed
 
 
 " ================================================================================================
@@ -84,6 +89,9 @@ nmap gn <action>(MethodDown)
 nmap ga <action>(GotoImplementation)
 "跳转到当前类的接口或父类
 nmap gs <action>(GotoSuperMethod)
+" 退回到上一个光标位置
+nmap g; <action>(Back)
+
 
 " bookmark 切换书签
 nmap ma <action>(ToggleBookmark)

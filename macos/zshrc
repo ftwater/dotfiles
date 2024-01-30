@@ -1,0 +1,7 @@
+RPROMPT="[%*]"
+
+TRAPALRM() {
+    zle reset-prompt
+}
+
+SECONDS=1
