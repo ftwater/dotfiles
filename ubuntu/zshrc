@@ -111,4 +111,4 @@ eval "$(zoxide init zsh --cmd cd)"
 eval "$(jenv init -)"
 # eval init end
 export TIME_STYLE='+%Y-%m-%d %H:%M:%S'
-ZSH_AUTOSUGGEST_STRATEGY='match_prev_cmd'
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
