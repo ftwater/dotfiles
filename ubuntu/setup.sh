@@ -28,6 +28,9 @@ sudo apt-get update
 log "...install base..."
 sudo apt-get install curl wget unzip -y
 
+log "...install input method rime-ibus..."
+sudo apt-get install ibus-rime librime-data-luna-pinyin -y
+
 log "...安装neovim..."
 sudo apt-get install neovim -y
 
