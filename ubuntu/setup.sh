@@ -13,14 +13,6 @@ function install_jenv() {
 function install_zoxide() {
     curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | bash 
 }
-function install_nerd_font(){
-    wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/0xProto.zip
-    mkdir 0xProto
-    uzip -d 0xProto 0xProto.zip
-    cp ./0xProto/*.ttf ~/.fonts
-    fc-cache -fv
-    rm -rf ./0xProto.zip /0xProto
-}
 
 log "...更新源..."
 sudo apt-get update
@@ -39,9 +31,6 @@ install_jenv &
 
 log "...安装zoxide..."
 install_zoxide &
-
-log "...install nerdFont..."
-install_nerd_font &
 
 # log "...创建配置文件链接..."
 # log "HOME = $HOME"
