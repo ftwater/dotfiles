@@ -37,4 +37,9 @@ install_zoxide &
 # mkdir -p $HOME/.config 
 # ln -sf $WORK_DIR/zshrc $HOME/.zshrc
 
+./install_nerd_font.sh
+./install_java_env.sh
+./install_google_chrome.sh
+./install_zsh_oh_my_zsh.sh
+
 log "设置完成，请重启生效"
