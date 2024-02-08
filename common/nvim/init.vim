@@ -4,13 +4,17 @@ set relativenumber
 set hlsearch
 set ignorecase
 set smartcase
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set expandtab
 
 "" ### Plugs ###
 call plug#begin()
   Plug 'tpope/vim-surround'
   Plug 'vim-airline/vim-airline'
-  Plug 'jiangmiao/auto-pairs' 
-  Plug 'easymotion/vim-easymotion' 
+  Plug 'jiangmiao/auto-pairs'
+  Plug 'easymotion/vim-easymotion'
 call plug#end()
 
 "" === base key map ===
