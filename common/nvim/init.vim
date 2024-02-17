@@ -12,6 +12,8 @@ set expandtab
 "" ### Plugs ###
 call plug#begin()
   Plug 'tpope/vim-surround'
+  Plug 'tpope/vim-repeat'
+  Plug 'terryma/vim-multiple-cursors'
   Plug 'vim-airline/vim-airline'
   Plug 'jiangmiao/auto-pairs'
   Plug 'easymotion/vim-easymotion'
