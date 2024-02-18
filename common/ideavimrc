@@ -1,8 +1,6 @@
 " ================================================================================================
 " 🍰🍰🍰 Extensions 🍰🍰🍰
 " ================================================================================================
-Plug 'preservim/nerdtree'
-
 "下列插件需要在IDEA中下载
 "ideaVim
 "IdeaVim-EasyMotion
@@ -35,13 +33,6 @@ set number relativenumber
 
 "--不需要循环搜索
 set nowrapscan
-
-"--设置返回normal模式时回到英文输入法
-set keep-english-in-normal
-
-"共享系统剪切板
-set clipboard=unnamed
-
 
 " ================================================================================================
 " 🌍🌍🌍 No Leader Keymaps 🌍🌍🌍
@@ -104,7 +95,6 @@ nmap ma <action>(ToggleBookmark)
 nmap <C-S> <action>(SaveAll)
 imap <C-S> <Esc><action>(SaveAll)
 
-nmap s <Plug>(easymotion-prefix)s
 " e: Extract
 " extract method/function 将选中的代码片段提取为一个独立的方法(Ctrl + Alt + M)
 vmap <leader>em <action>(ExtractMethod)
@@ -135,6 +125,8 @@ let mapleader = " "
 set which-key
 set notimeout
 set easymotion
+set NERDTree
+set ReplaceWithRegister
 
 
 
@@ -380,22 +372,7 @@ nmap <leader>nc <action>(NewClass)
 let g:WhichKeyDesc_OpenTerminal = "<leader>ot ActivateTerminalToolWindow"
 nmap <leader>ot <action>(ActivateTerminalToolWindow)
 
-"========== p ==========
-"从剪切板粘贴到下面行
-let g:WhichKeyDesc_PasteClipboardDown = "<leader>p PasteClipboardDown"
-nmap <leader>p "+p
-"从剪切板粘贴到上面行
-let g:WhichKeyDesc_PasteClipboardUp = "<leader>P PasteClipboardUp"
-nmap <leader>P "+P
-"在可视模式中：从剪切板粘贴到下面行
-let g:WhichKeyDesc_PasteClipboardDown = "<leader>p PasteClipboardDown"
-vmap <leader>p "+p
-"在可视模式中：从剪切板粘贴到上面行
-let g:WhichKeyDesc_PasteClipboardUp = "<leader>P PasteClipboardUp"
-vmap <leader>P "+P
-
-
-"========== p ==========
+"========== q ==========
 "快速查看文档
 let g:WhichKeyDesc_QuickDocument = "<leader>qd QuickDocument"
 nmap <leader>qd <action>(QuickJavaDoc)
@@ -431,8 +408,6 @@ nmap <leader>sb <action>(ShowBookmarks)
 let g:WhichKeyDesc_Show_ParameterInfo = "<leader>sp ShowParameterInfo"
 nmap <leader>sp <action>(ParameterInfo);
 
-
-
 "========= t ==========
 "翻译
 let g:WhichKeyDesc_Translate = "<leader>t Translate"
@@ -461,6 +436,7 @@ nmap <leader>wh <Alt-6>
 "将 "+ 简化为 <leader>
 let g:WhichKeyDesc_CopyClipboard = "<leader>y CopyClipboard"
 vmap <leader>y "+y
+
 "将 "+ 简化为 <leader>
 let g:WhichKeyDesc_CopyClipboard= "<leader>y CopyClipboard"
 nmap <leader>y "+yy
