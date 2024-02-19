@@ -19,3 +19,5 @@ scoop install extras/bitwarden
 scoop install main/git
 scoop install main/oh-my-posh
 scoop install extras/lazy-posh-git
+
+New-NetFirewallRule -DisplayName "custom rdp 33890" -Direction Inbound -LocalPort 33890 -Protocol TCP -Action Allow
