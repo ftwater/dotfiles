@@ -21,3 +21,5 @@ scoop install main/oh-my-posh
 scoop install extras/lazy-posh-git
 
 New-NetFirewallRule -DisplayName "custom rdp 33890" -Direction Inbound -LocalPort 33890 -Protocol TCP -Action Allow
+
+sudo New-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations' -Name "DWMFRAMEINTERVAL" -Value 15 -PropertyType DWORD
