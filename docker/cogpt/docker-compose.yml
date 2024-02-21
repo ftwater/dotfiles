@@ -9,6 +9,7 @@ services:
     volumes:
       - ./db:/app/db
       - ./log:/app/log
+      - ./.env:/app/.env
     restart: always
     container_name: cogpt-api
 
