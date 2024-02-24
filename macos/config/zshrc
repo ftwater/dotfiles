@@ -99,18 +99,27 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
 # export env
+export TIME_STYLE='+%Y-%m-%d %H:%M:%S'
 export PATH="$HOME/.jenv/bin:$HOME/.local/bin:$PATH"
 export PATH="/usr/local/bin:$PATH"
 export PATH="$HOME/tools/apache-maven-3.9.6/bin:$PATH"
+export PATH="$HOME/tools/dotfiles/scripts:$PATH"
 # export env end
+
 # alias 
 alias vim=nvim
 # alias end
+
 # eval init
 eval "$(zoxide init zsh --cmd cd)"
 eval "$(jenv init -)"
 # eval init end
-export TIME_STYLE='+%Y-%m-%d %H:%M:%S'
-ZSH_AUTOSUGGEST_STRATEGY=(completion history)
+
+# zsh autosuggest config
+ZSH_AUTOSUGGEST_STRATEGY=(match_prev_cmd completion)
 bindkey '^I' autosuggest-accept 
+# zsh autosuggest config end
+
+zmodload zsh/zpty
