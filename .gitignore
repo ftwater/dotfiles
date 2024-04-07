@@ -2,3 +2,4 @@
 docker/cogpt/db
 docker/cogpt/log
 **/log.txt
+docker/remote_hosts/hostsfile/*
