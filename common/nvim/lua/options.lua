@@ -24,3 +24,10 @@ vim.opt.incsearch = true -- search as characters are entered
 -- vim.opt.hlsearch = false -- do not highlight matches
 vim.opt.ignorecase = true -- ignore case in searches by default
 vim.opt.smartcase = true -- but make it case sensitive if an uppercase is entered
+
+
+-- 在 normal 模式下，将 J 映射到 3j
+vim.api.nvim_set_keymap('n', 'J', '3j', {noremap = true})
+vim.api.nvim_set_keymap('n', 'K', '3k', {noremap = true})
+vim.api.nvim_set_keymap('n', 'H', '^', {noremap = true})
+vim.api.nvim_set_keymap('n', 'L', '$', {noremap = true})

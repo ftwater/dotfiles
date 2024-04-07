@@ -1,0 +1,11 @@
+version: '3'
+services:
+  jupyter:
+    build: .
+    volumes:
+      - ~/data/jupyter:/home/jovyan/work
+    ports:
+      - 4000:8888
+    environment:
+      - JUPYTER_TOKEN=add5a412-3db1-40a4-a434-3ba03b3e7e41
+    restart: always

@@ -8,7 +8,7 @@
 "which-key
 "CodeGlance Pro
 "Translation
-"RainbowBuckets
+"Smart-input
 
 
 
@@ -73,7 +73,7 @@ nmap ge <action>(GotoNextError)
 nmap gt <action>(GotoTest)
 "将光标移动到上一个方法的声明处
 nmap gm <action>(MethodUp)
-"将光标移动到洗衣歌方法的声明处
+"将光标移动到下一个方法的声明处
 nmap gn <action>(MethodDown)
 " last changed in current buffer(file)
 "跳转到当前接口或抽象类的实现处
