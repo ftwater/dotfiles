@@ -50,6 +50,8 @@ vnoremap H ^
 vnoremap L $
 nnoremap J 3j
 nnoremap K 3k
+vnoremap J 3j
+vnoremap K 3k
 
 "--在普通和插入模式下，向下交换行/向上交换行
 nnoremap <C-j> :m +1<CR>
