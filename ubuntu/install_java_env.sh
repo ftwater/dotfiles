@@ -1,5 +1,5 @@
 #!/bin/bash
-sudo apt-get install wget tar -y
+sudo apt-get install wget tar openjdk-8-jdk -y
 if [[ ! -f apache-maven-3.9.6-bin.tar.gz ]];then
 	wget https://dlcdn.apache.org/maven/maven-3/3.9.6/binaries/apache-maven-3.9.6-bin.tar.gz apache-maven-3.9.6-bin.tar.gz
 fi
