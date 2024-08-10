@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  file-server:
+    image: python:3.8-slim
+    volumes:
+      - /Users/zhaoyanpeng/Downloads:/usr/src/app
+    working_dir: /usr/src/app
+    command: python -m http.server 80
+    ports:
+      - "7777:80"
