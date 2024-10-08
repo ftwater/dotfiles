@@ -1,5 +1,5 @@
 #!/bin/bash
-brew install wget tar
+brew install wget tar openjdk@8
 if [[ ! -f apache-maven-3.9.6-bin.tar.gz ]];then
 	wget -O apache-maven-3.9.6-bin.tar.gz https://dlcdn.apache.org/maven/maven-3/3.9.6/binaries/apache-maven-3.9.6-bin.tar.gz 
 fi

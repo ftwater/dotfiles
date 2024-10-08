@@ -110,6 +110,15 @@ export PATH="$HOME/tools/dotfiles/scripts:$PATH"
 
 # alias 
 alias vim=nvim
+alias l=ll
+# 检查 ls 版本
+if ls --version > /dev/null 2>&1; then
+  # 如果支持 --version，则是 GNU 版 ls
+  alias ll="ls -l --time-style='+%Y-%m-%d %H:%M:%S'"
+else
+  # 否则是 BSD 版 ls
+  alias ll="ls -l -D '%Y-%m-%d %H:%M:%S'"
+fi
 # alias end
 
 # eval init
@@ -123,3 +132,4 @@ bindkey '^I' autosuggest-accept
 # zsh autosuggest config end
 
 zmodload zsh/zpty
+. "/Users/zhaoyanpeng/.acme.sh/acme.sh.env"
