@@ -111,6 +111,7 @@ export PATH="$HOME/tools/dotfiles/scripts:$PATH"
 # alias 
 alias vim=nvim
 alias l=ll
+alias cls=clear
 # 检查 ls 版本
 if ls --version > /dev/null 2>&1; then
   # 如果支持 --version，则是 GNU 版 ls
