@@ -100,6 +100,8 @@ imap <C-S> <Esc><action>(SaveAll)
 " e: Extract
 " extract method/function 将选中的代码片段提取为一个独立的方法(Ctrl + Alt + M)
 vmap <leader>em <action>(ExtractMethod)
+" MembersPullUp 将选中的方法提升到接口定义
+vmap <leader>emu <action>(MembersPullUp)
 " extract constant （引入常量）的重构操作:将选中的代码片段抽取为一个常量，并自动替换选中的代码片段为新的常量引用(Ctrl + Alt + C)
 vmap <leader>ec <action>(IntroduceConstant)
 " extract field （引入字段）的重构操作:将选中的代码片段转化为一个新的字段，并自动将选中的代码片段替换为对该字段的引用(Ctrl + Alt + F)
@@ -164,7 +166,6 @@ set ReplaceWithRegister
 " gr: RollbackHunk-执行版本控制（VCS）的回滚操作，将修改的代码还原到之前的版本
 " gc: GenerateConstructor-生成构造函数
 " gg: GenerateGetter-生成getter函数
-" gs: GenerateSetter-生成setter函数
 " ga: GenerateGetterAndSetter-生成getter和setter函数
 " ge: GenerateEquals-生成equals和hashcode的重写方法
 " gd: ShowTabbedFileHistory-显示文件的版本控制历史(git)
@@ -309,9 +310,6 @@ nmap <leader>gc :action GenerateConstructor<CR>
 "生成getter
 let g:WhichKeyDesc_GitOrGenerate_GenerateGetter = "<leader>gg GenerateGetter"
 nmap <leader>gg :action GenerateGetter<CR>
-"生成setter
-let g:WhichKeyDesc_GitOrGenerate_GenerateSetter = "<leader>gs GenerateSetter"
-nmap <leader>gs :action GenerateSetter<CR>
 "生成setter和getter
 let g:WhichKeyDesc_GitOrGenerate_GenerateGetterAndSetter = "<leader>ga GenerateGetterAndSetter"
 nmap <leader>ga <action>(GenerateGetterAndSetter)
