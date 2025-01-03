@@ -1,0 +1,24 @@
+version: '3.7'
+
+services:
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.10.0
+    container_name: elasticsearch
+    environment:
+      - discovery.type=single-node
+      - ES_JAVA_OPTS=-Xms1g -Xmx1g  # 设置JVM堆内存大小
+    ports:
+      - "9200:9200"  # HTTP API端口
+      - "9300:9300"  # 集群通信端口
+    volumes:
+      - es_data:/usr/share/elasticsearch/data  # 持久化数据
+    networks:
+      - es_net
+    restart: always  # 容器退出后自动重启
+
+volumes:
+  es_data:  # 定义一个持久化卷用于存储 Elasticsearch 数据
+
+networks:
+  es_net:
+    driver: bridge
