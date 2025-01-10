@@ -1,5 +1,24 @@
 #!/bin/bash
 
+# Ubuntu 开发环境一键安装脚本
+# 功能：自动化安装和配置Ubuntu开发环境
+# 安装组件：
+#   - Google Chrome浏览器
+#   - Java开发环境（JDK 8 + Maven）
+#   - Neovim编辑器及相关插件
+#   - Nerd字体
+#   - Zsh shell及Oh My Zsh框架
+#   - Snap常用开发工具
+# 配置内容：
+#   - Java环境变量
+#   - Neovim配置文件
+#   - Zsh配置文件
+#   - Snap常用开发工具
+# 使用说明：
+#   1. 直接运行脚本：./ubuntu_setup.sh
+#   2. 选择要安装的组件
+#   3. 按照提示完成安装
+
 # 统一安装脚本
 # 版本: 2.0
 # 作者: Cline
@@ -82,10 +101,10 @@ show_progress() {
   local filled=$((width * percent / 100))
   local empty=$((width - filled))
   
-  printf "\r["
-  printf "%${filled}s" | tr ' ' '#'
+  printf "\r${BLUE}[${NC}"
+  printf "%${filled}s" | tr ' ' '='
   printf "%${empty}s" | tr ' ' ' '
-  printf "] %3d%%" $percent
+  printf "${BLUE}] ${GREEN}%3d%%${NC}" $percent
 }
 
 # 函数：安装前检查
@@ -107,33 +126,66 @@ pre_install_check() {
   fi
 }
 
-# 解析参数
-while [[ $# -gt 0 ]]; do
-  case "$1" in
-    --all)
-      INSTALL_CHROME=true
-      INSTALL_JAVA=true
-      INSTALL_NEOVIM=true
-      INSTALL_FONTS=true
-      INSTALL_ZSH=true
-      CONFIG_SNAP=true
-      ;;
-    --chrome) INSTALL_CHROME=true ;;
-    --java) INSTALL_JAVA=true ;;
-    --neovim) INSTALL_NEOVIM=true ;;
-    --fonts) INSTALL_FONTS=true ;;
-    --zsh) INSTALL_ZSH=true ;;
-    --snap) CONFIG_SNAP=true ;;
-    --silent) SILENT_MODE=true ;;
-    --help) show_help ;;
-    *) 
-      log "ERROR" "未知选项: $1"
-      show_help
-      exit 1
-      ;;
-  esac
-  shift
-done
+# 显示菜单并选择安装项
+show_menu() {
+  echo -e "${GREEN}请选择要安装的组件（可多选）：${NC}"
+  echo " 1) Google Chrome"
+  echo " 2) Java环境"
+  echo " 3) Neovim"
+  echo " 4) Nerd字体"
+  echo " 5) Zsh和Oh My Zsh"
+  echo " 6) Snap配置"
+  echo " 7) 全部安装"
+  echo " 0) 退出"
+  echo
+  echo -e "${YELLOW}请输入选择（多个选项用空格分隔）：${NC}"
+  
+  read -r -a choices
+  for choice in "${choices[@]}"; do
+    case $choice in
+      1) INSTALL_CHROME=true ;;
+      2) INSTALL_JAVA=true ;;
+      3) INSTALL_NEOVIM=true ;;
+      4) INSTALL_FONTS=true ;;
+      5) INSTALL_ZSH=true ;;
+      6) CONFIG_SNAP=true ;;
+      7)
+        INSTALL_CHROME=true
+        INSTALL_JAVA=true
+        INSTALL_NEOVIM=true
+        INSTALL_FONTS=true
+        INSTALL_ZSH=true
+        CONFIG_SNAP=true
+        ;;
+      0) exit 0 ;;
+      *)
+        log "ERROR" "无效选择: $choice"
+        exit 1
+        ;;
+    esac
+  done
+}
+
+# 显示菜单并获取选择
+show_menu
+
+# 安装前确认
+echo
+log "WARNING" "即将安装以下组件："
+$INSTALL_CHROME && log "INFO" "  - Google Chrome"
+$INSTALL_JAVA && log "INFO" "  - Java环境"
+$INSTALL_NEOVIM && log "INFO" "  - Neovim"
+$INSTALL_FONTS && log "INFO" "  - Nerd字体"
+$INSTALL_ZSH && log "INFO" "  - Zsh和Oh My Zsh"
+$CONFIG_SNAP && log "INFO" "  - Snap配置"
+echo
+
+read -p "确定要开始安装吗？[y/N] " -n 1 -r
+echo
+if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+  log "INFO" "安装已取消"
+  exit 0
+fi
 
 # 安装前检查
 pre_install_check
