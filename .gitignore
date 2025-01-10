@@ -3,3 +3,4 @@ docker/cogpt/db
 docker/cogpt/log
 **/log.txt
 docker/remote_hosts/hostsfile/*
+macos/bing_wallpaper/
