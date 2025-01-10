@@ -79,11 +79,13 @@ nmap gm <action>(MethodUp)
 nmap gn <action>(MethodDown)
 " last changed in current buffer(file)
 "跳转到当前接口或抽象类的实现处
-nmap ga <action>(GotoImplementation)
+nmap gi <action>(GotoImplementation)
 "跳转到当前类的接口或父类
 nmap gs <action>(GotoSuperMethod)
 " 退回到上一个光标位置
-nmap g; <action>(Back)
+nmap gb <action>(Back)
+" 前进到下一个光标位置
+nmap gf <action>(Forward)
 
 
 " bookmark 切换书签
