@@ -308,6 +308,12 @@ install_neovim() {
     ~/.local/share/nvim/site/pack/packer/start/packer.nvim > /dev/null
   check_command "安装Packer.nvim" || return 1
 
+  # 创建nvim配置软链接
+  log "INFO" "创建nvim配置软链接..."
+  mkdir -p ~/.config
+  ln -sf ../common/nvim ~/.config/nvim
+  check_command "创建nvim配置软链接" || return 1
+
   log "SUCCESS" "Neovim安装完成"
   return 0
 }
