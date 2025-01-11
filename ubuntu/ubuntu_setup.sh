@@ -392,6 +392,11 @@ install_zsh() {
     ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
   check_command "安装zsh-autosuggestions" || return 1
 
+  # 创建zshrc配置软链接
+  log "INFO" "创建zshrc配置软链接..."
+  ln -sf ~/dotfiles/ubuntu/config/zshrc ~/.zshrc
+  check_command "创建zshrc配置软链接" || return 1
+
   log "SUCCESS" "Zsh和Oh My Zsh安装完成"
   return 0
 }
