@@ -58,7 +58,7 @@ log() {
     *) color=$NC ;;
   esac
   
-  echo -e "${color}[${timestamp}] ${level}: ${message}${NC}" | tee -a "$LOG_FILE"
+  echo -e "${color}[${timestamp}] ${level}: ${message}${NC}" >> "$LOG_FILE"
 }
 
 # 函数：显示帮助
@@ -94,18 +94,27 @@ check_command() {
 
 # 函数：显示进度条
 show_progress() {
-  if $SILENT_MODE; then return; fi
-  
   local width=50
   local percent=$1
+  
+  # 如果总步骤为0，直接显示100%
+  if [ $TOTAL_STEPS -eq 0 ]; then
+    percent=100
+  fi
+  
   local filled=$((width * percent / 100))
   local empty=$((width - filled))
   
-  printf "\r${BLUE}[${NC}"
-  printf "%${filled}s" | tr ' ' '='
-  printf "%${empty}s" | tr ' ' ' '
-  printf "${BLUE}] ${GREEN}%3d%%${NC}" $percent
+  if ! $SILENT_MODE; then
+    printf "\r${BLUE}[${NC}"
+    printf "%${filled}s" | tr ' ' '='
+    printf "%${empty}s" | tr ' ' ' '
+    printf "${BLUE}] ${GREEN}%3d%%${NC}" $percent
+  fi
 }
+
+# 捕获EXIT信号，确保退出时显示完整进度
+trap 'show_progress 100' EXIT
 
 # 函数：安装前检查
 pre_install_check() {
@@ -117,12 +126,6 @@ pre_install_check() {
     if [[ ! $REPLY =~ ^[Yy]$ ]]; then
       exit 1
     fi
-  fi
-
-  # 检查网络连接
-  if ! ping -c 1 google.com &> /dev/null; then
-    log "ERROR" "网络连接失败，请检查网络设置"
-    exit 1
   fi
 }
 
@@ -190,8 +193,9 @@ fi
 # 安装前检查
 pre_install_check
 
-# 统计安装项数量
+# 统计安装项数量，至少为1
 TOTAL_STEPS=$((INSTALL_CHROME + INSTALL_JAVA + INSTALL_NEOVIM + INSTALL_FONTS + INSTALL_ZSH + CONFIG_SNAP))
+TOTAL_STEPS=$((TOTAL_STEPS > 0 ? TOTAL_STEPS : 1))
 CURRENT_STEP=0
 
 # 安装Google Chrome
