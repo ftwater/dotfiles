@@ -298,6 +298,9 @@ nmap <leader>fc <action>(GotoAction)
 "重新格式化代码，使其符合预定义的代码样式和规范 \| 优化导入语句，删除未使用的导入，并将导入语句按字母顺序进行排列
 let g:WhichKeyDesc_FindOrFormat_Format = "<leader>fm Format"
 nmap <leader>fm <action>(ReformatCode) \| <action>(OptimizeImports)
+" 打开 FileStructurePopup
+nmap <leader>fs <action>(FileStructurePopup)
+
 
 
 "========== g ==========
